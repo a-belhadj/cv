@@ -1,0 +1,317 @@
+%%%%%%%%%%%%%%%%%
+% This is an sample CV template created using altacv.cls
+% (v1.7.4, 30 July 2025) written by LianTze Lim (liantze@gmail.com). Compiles with pdfLaTeX, XeLaTeX and LuaLaTeX.
+%
+%% It may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2003/12/01 or later.
+%%%%%%%%%%%%%%%%
+
+%% Use the "normalphoto" option if you want a normal photo instead of cropped to a circle
+% \documentclass[10pt,a4paper,withhyper,normalphoto]{altacv}
+
+\documentclass[10pt,a4paper,withhyper]{template/altacv}
+%% AltaCV uses the fontawesome5 and simpleicons packages.
+%% See http://texdoc.net/pkg/fontawesome5 and http://texdoc.net/pkg/simpleicons for full list of symbols.
+
+% Change the page layout if you need to
+\geometry{left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm}
+
+% The paracol package lets you typeset columns of text in parallel
+\usepackage{paracol}
+
+% Change the font if you want to, depending on whether
+% you're using pdflatex or xelatex/lualatex
+% WHEN COMPILING WITH XELATEX PLEASE USE
+% xelatex -shell-escape -output-driver="xdvipdfmx -z 0" sample.tex
+\iftutex%
+  % If using xelatex or lualatex:
+  \setmainfont{Roboto Slab}
+  \setsansfont{Lato}
+  \renewcommand{\familydefault}{\sfdefault}
+\else
+  % If using pdflatex:
+  \usepackage[rm]{roboto}
+  \usepackage[defaultsans]{lato}
+  % \usepackage{sourcesanspro}
+  \renewcommand{\familydefault}{\sfdefault}
+\fi
+
+% Change the colours if you want to
+% Blue palette
+\definecolor{PaleLightBlue}{HTML}{e7f5f9}
+\definecolor{BrightBlue}{HTML}{109fc8}
+\definecolor{DarkTeal}{HTML}{095f78}
+\definecolor{DeepBlue}{HTML}{104b64}
+\colorlet{name}{DeepBlue}
+\colorlet{tagline}{BrightBlue}
+\colorlet{heading}{DeepBlue}
+\colorlet{headingrule}{BrightBlue}
+\colorlet{subheading}{DarkTeal}
+\colorlet{accent}{BrightBlue}
+\colorlet{emphasis}{black}
+\colorlet{body}{black!80}
+
+% Change some fonts, if necessary
+\renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+\renewcommand{\personalinfofont}{\footnotesize}
+\renewcommand{\cvsectionfont}{\LARGE\rmfamily\bfseries}
+\renewcommand{\cvsubsectionfont}{\large\bfseries}
+
+
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\renewcommand{\cvItemMarker}{{\small\textbullet}}
+\renewcommand{\cvRatingMarker}{\faCircle}
+% ...and the markers for the date/location for \cvevent
+% \renewcommand{\cvDateMarker}{\faCalendar*[regular]}
+% \renewcommand{\cvLocationMarker}{\faMapMarker*}
+
+
+% If your CV/résumé is in a language other than English,
+% then you probably want to change these so that when you
+% copy-paste from the PDF or run pdftotext, the location
+% and date marker icons for \cvevent will paste as correct
+% translations. For example Spanish:
+% \renewcommand{\locationname}{Ubicación}
+% \renewcommand{\datename}{Fecha}
+
+
+%% Use (and optionally edit if necessary) this .tex if you
+%% want to use an author-year reference style like APA(6)
+%% for your publication list
+% \input{pubs-authoryear.cfg}
+
+%% Use (and optionally edit if necessary) this .tex if you
+%% want an originally numerical reference style like IEEE
+%% for your publication list
+% \input{pubs-num.cfg}
+
+%% sample.bib contains your publications
+% \addbibresource{sample.bib}
+
+\begin{document}
+\name{Anthony Belhadj}
+\tagline{Platform Engineer/Site Reliability Engineer}
+%% You can add multiple photos on the left or right
+% \photoR{2.8cm}{Globe_High}
+% \photoL{2.5cm}{Yacht_High,Suitcase_High}
+
+\personalinfo{%
+  % Not all of these are required!
+  \printinfo{}{3 months' notice}
+  \email{belhadj.anthony@gmail.com}
+  \location{Grenoble, Auvergne Rhône-Alpes, FR}
+  % \homepage{www.homepage.com}
+  % \twitter{@twitterhandle}
+  % \xtwitter{@x-handle}
+  \linkedin{anthony-belhadj-979710140}
+  \github{a-belhadj}
+  % \orcid{0000-0000-0000-0000}
+  %% You can add your own arbitrary detail with
+  %% \printinfo{symbol}{detail}[optional hyperlink prefix]
+  % \printinfo{\faPaw}{Hey ho!}[https://example.com/]
+
+  %% Or you can declare your own field with
+  %% \NewInfoFiled{fieldname}{symbol}[optional hyperlink prefix] and use it:
+  % \NewInfoField{gitlab}{\faGitlab}[https://gitlab.com/]
+  % \gitlab{your_id}
+  %%
+  %% For services and platforms like Mastodon where there isn't a
+  %% straightforward relation between the user ID/nickname and the hyperlink,
+  %% you can use \printinfo directly e.g.
+  % \printinfo{\faMastodon}{@username@instace}[https://instance.url/@username]
+  %% But if you absolutely want to create new dedicated info fields for
+  %% such platforms, then use \NewInfoField* with a star:
+  % \NewInfoField*{mastodon}{\faMastodon}
+  %% then you can use \mastodon, with TWO arguments where the 2nd argument is
+  %% the full hyperlink.
+  % \mastodon{@username@instance}{https://instance.url/@username}
+}
+
+\makecvheader%
+%% Depending on your tastes, you may want to make fonts of itemize environments slightly smaller
+% \AtBeginEnvironment{itemize}{\small}
+
+%% Set the left/right column width ratio to 6:4.
+
+% Start a 2-column paracol. Both the left and right columns will automatically
+% break across pages if things get too long.
+% \begin{paracol}{2}
+\cvsection{Summary}
+
+
+
+After seven years at Hewlett Packard Enterprise, I am looking for new challenges.
+
+I have actively contributed to bridging the gap between infrastructure and developers by designing automation and self-service platforms that improved delivery speed, reliability, and developer experience.
+
+I co-designed and delivered Squest, a self-service provisioning and automation platform that modernized our infrastructure management, eliminating low-value repetitive tasks and enabling teams to focus on higher-impact engineering work.
+
+\begin{quote}
+TL;DR --- I bridge the gap between infrastructure and developers.
+\end{quote}
+
+\bigskip
+\cvsection{Experience}
+
+\cveventlogo{Platform Engineer / Site Reliability Engineer}{Hewlett Packard Enterprise---Aruba Telco Solutions}{September 2022--Today}{Grenoble, FR}{logos/hpe.png}
+
+
+Platform engineer within a 7-person team operating large-scale on-prem infrastructure (20 racks, 300+ servers, 40 switches) supporting over 500 telecom software developers.
+
+\textbf{Enhanced infrastructure operations and team efficiency}
+\begin{itemize}
+  \item Designed and deployed a centralized \textbf{observability stack} (Grafana, Prometheus, Alertmanager) for real-time monitoring, faster incident response, and data-driven capacity planning
+  \item Accelerated rack bring-up and hardware onboarding through \textbf{Redfish}-based automation
+  \item Streamlined \textbf{network switch configuration} using Nvidia Cumulus Linux and Ansible for consistent, fully automated provisioning
+\end{itemize}
+
+\textbf{Expanded and automated the service catalog for R\&D teams}
+\begin{itemize}
+  \item Built \textbf{VMware VM provisioning pipeline} with Packer and cloud-init (30min → 2min deployment time)
+  \item Delivered \textbf{Red Hat OpenShift cluster automation} on OpenStack and VMware using Ansible (4h → 45min setup)
+  \item Created customized \textbf{bare-metal provisioning workflows} with Canonical MAAS and cloud-init (1h30 → 15min)
+  \item Provided \textbf{platform support}, troubleshooting, and incident resolution for development and R\&D teams
+\end{itemize}
+
+\textbf{Strengthened infrastructure visibility and executive decision-making}
+\begin{itemize}
+  \item Exposed observability metrics on resource reservations, consumption, and cross-platform utilization for capacity planning
+  \item Delivered \textbf{executive-ready reports} on infrastructure allocation, utilization, and growth trends to inform strategic planning and investment decisions
+\end{itemize}
+
+
+\medskip
+\divider%
+\medskip
+
+\cveventlogo{DevOps Engineer}{Hewlett Packard Enterprise---Communication and Media Solutions}{Sept. 2019--September 2022}{Grenoble, FR}{logos/hpe.png}
+
+\textbf{From Excel to Netbox}
+\begin{itemize}
+\item Migrated datacenter management from spreadsheets to modern DCIM platform with REST APIs, dynamic reports and dashboards
+\item Led requirements gathering and conducted team training sessions
+\item Orchestrated production rollout with backup, monitoring, alerting and lifecycle management via Ansible
+\end{itemize}
+
+\textbf{Design and development of \faGithub\href{https://github.com/HewlettPackard/squest}{Squest}}---Self-service portal on top of Ansible Tower/AWX
+\begin{itemize}
+\item Architected Django-based platform with docker-compose deployment and CI/CD via Github Actions
+\item Developed Ansible playbooks to orchestrate HPE infrastructure through Squest
+\item Onboarded and trained internal teams, reaching 300+ active developers at HPE
+\item Maintained full open-source lifecycle: documentation, releases, issue tracking, code reviews
+\item Achieved 3rd most starred project on HPE's GitHub, adopted by US/French universities and major companies
+\end{itemize}
+
+\medskip
+\divider%
+\medskip
+
+\cveventlogo{Developer (Internship)}{Hewlett Packard Enterprise---High Performance Computing}{April 2019--June 2019}{Grenoble, FR}{logos/hpe.png}
+
+
+Built automated test environment for exascale monitoring solution (\faGithub\href{https://github.com/HewlettPackard/KrakenMare}{KrakenMare}) using Ansible, Docker Swarm and Gitlab CI
+
+\bigskip
+\begin{paracol}{2}
+
+\cvsection{Education}
+
+\cvevent{Information Systems Engineering}{Master's Degree in Engineering}{2019--2022}{Grenoble INP---ENSIMAG (\#1 CS Engineering School in France)}
+
+\divider%
+
+\cvevent{Computer Science}{2-year Technical University Diploma}{2017--2019}{IUT2---UGA}
+
+\switchcolumn%
+\cvsection{Certifications}
+
+\cvachievement{\faFlagUsa}{TOEIC Score: 940/990 --- 2021}{Test of English for International Communication}
+\cvachievement{\faCloud}{Red Hat Certified OpenStack Administrator (CL110) --- 2024}{Certified in deploying, managing, and troubleshooting OpenStack environments}
+\cvachievement{\faCube}{Certified Kubernetes Administrator (CKA) – In Progress}{Currently preparing for the official exam to validate Kubernetes administration skills}
+\end{paracol}
+
+\bigskip
+% use ONLY \newpage if you want to force a page break for
+% ONLY the current column
+
+%% Specify your last name(s) and first name(s) as given in the .bib to automatically bold your own name in the publications list.
+%% One caveat: You need to write \bibnamedelima where there's a space in your name for this to work properly; or write \bibnamedelimi if you use initials in the .bib
+%% You can specify multiple names, especially if you have changed your name or if you need to highlight multiple authors.
+%% MAKE SURE THERE IS NO SPACE AFTER THE FINAL NAME IN YOUR \mynames LIST
+
+% Bibliography section - uncomment if you have a .bib file with publications
+% \nocite{*}
+% \printbibliography[heading=pubtype,title={\printinfo{\faBook}{Books}},type=book]
+% \divider
+% \printbibliography[heading=pubtype,title={\printinfo{\faFile*[regular]}{Journal Articles}},type=article]
+% \divider
+% \printbibliography[heading=pubtype,title={\printinfo{\faUsers}{Conference Proceedings}},type=inproceedings]
+
+%% Switch to the right column. This will now automatically move to the second
+%% page if the content is too long.
+% \switchcolumn%
+
+
+\bigskip
+
+\columnratio{0.3}
+\begin{paracol}{2}
+\cvsection{Languages}
+
+\cvskill{English}{4}
+\divider%
+
+\cvskill{French}{5}
+\divider%
+
+\switchcolumn%
+
+\cvsection{Rewards}
+
+\cvachievement{\faStar}{3rd Most Starred Repo on HPE GitHub ---\faGithub\href{https://github.com/HewlettPackard/squest}{Squest}}{Open-source self-service portal}
+\cvachievement{\faGamepad}{IUT2 Game Jam Winner (2019) ---\faGithub\href{https://github.com/a-belhadj/TrashSpace}{TrashSpace}}{Game development from scratch in 96 hours}
+
+\end{paracol}
+
+\cvsection{Strengths}
+
+\cvtag{Hard-working}
+\cvtag{\textbf{Never gives up}}
+\cvtag{\textbf{Autonomous}}
+\cvtag{Communication}
+\cvtag{Documentation}
+
+\divider\smallskip
+
+\cvtag{\textbf{Algorithms}}
+\cvtag{Applied mathematics}
+\cvtag{\textbf{Network}}
+
+\divider\smallskip
+
+\cvtag{\textbf{Linux}}
+\cvtag{\textbf{Virtualization}}
+\cvtag{\textbf{Containers}}
+\cvtag{\textbf{Kubernetes}}
+\cvtag{\textbf{Git}}
+\cvtag{Markdown}
+\cvtag{\textbf{Ansible}}
+\cvtag{Bash}
+\cvtag{SQL}
+\cvtag{\textbf{Python}}
+\cvtag{\textbf{Django}}
+
+
+\cvsection{Life Philosophy}
+
+\begin{quote}
+``Choose a job you love, and you will never have to work a day in your life''.
+\end{quote}
+
+\end{document}
