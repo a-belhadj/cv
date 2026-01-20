@@ -1,0 +1,54 @@
+%%%%%%%%%%%%%%%%%
+% This is CV - Public version (without phone and address)
+%%%%%%%%%%%%%%%%%
+
+\documentclass[10pt,a4paper,withhyper]{template/altacv}
+\input{preamble.tex}
+
+\begin{document}
+\name{Anthony Belhadj}
+\tagline{Platform Engineer/Site Reliability Engineer}
+
+% Include personal information - PUBLIC VERSION
+\input{sections/personal-info-public.tex}
+
+\makecvheader%
+
+% Include Summary section
+\bigskip
+\input{sections/summary.tex}
+
+% Include Experience section
+\bigskip
+\input{sections/experience.tex}
+
+% Education and Certifications in parallel columns
+\bigskip
+\begin{paracol}{2}
+\input{sections/education.tex}
+
+\switchcolumn%
+\input{sections/certifications.tex}
+\end{paracol}
+
+\bigskip
+
+% Languages and Rewards in parallel columns
+\columnratio{0.3}
+\begin{paracol}{2}
+\input{sections/languages.tex}
+
+\switchcolumn%
+\input{sections/rewards.tex}
+\end{paracol}
+
+% Include Strengths section
+\input{sections/strengths.tex}
+
+% Include Life Philosophy section
+\input{sections/life-philosophy.tex}
+
+% Footer
+\input{sections/footer.tex}
+
+\end{document}

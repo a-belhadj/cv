@@ -1,0 +1,22 @@
+name: Lint CV
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    container: ghcr.io/a-belhadj/cv-latex:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Lint LaTeX files
+        run: |
+          cd latex
+          chktex cv-public.tex
+          # cv-full.tex is not linted as personal-info-full.tex is not in Git

@@ -1,0 +1,56 @@
+name: Build and Deploy CV
+
+on:
+  workflow_run:
+    workflows: ["Lint CV"]
+    types:
+      - completed
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: ghcr.io/a-belhadj/cv-latex:latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build CV (public version)
+        run: |
+          cd latex
+          HASH=$(echo "${{ github.sha }}" | cut -c1-7)
+          pdflatex -interaction=nonstopmode "\newcommand{\githash}{${HASH}}\input{cv-public.tex}"
+
+      - name: Prepare deployment directory
+        run: |
+          mkdir -p _site
+          cp latex/cv-public.pdf _site/cv.pdf
+          cp pages/index.html _site/
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '_site'
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

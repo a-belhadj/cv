@@ -1,0 +1,51 @@
+% Shared preamble for CV (full and public versions)
+
+% Change the page layout if you need to
+\geometry{left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm}
+
+% The paracol package lets you typeset columns of text in parallel
+\usepackage{paracol}
+
+% Git commit hash (defined by CI via \newcommand before \input{preamble})
+\ifdefined\githash\else
+  \newcommand{\githash}{}
+\fi
+
+% Change the font if you want to, depending on whether
+% you're using pdflatex or xelatex/lualatex
+\iftutex%
+  % If using xelatex or lualatex:
+  \setmainfont{Roboto Slab}
+  \setsansfont{Lato}
+  \renewcommand{\familydefault}{\sfdefault}
+\else
+  % If using pdflatex:
+  \usepackage[rm]{roboto}
+  \usepackage[defaultsans]{lato}
+  \renewcommand{\familydefault}{\sfdefault}
+\fi
+
+% Change the colours if you want to
+% Blue palette
+\definecolor{PaleLightBlue}{HTML}{e7f5f9}
+\definecolor{BrightBlue}{HTML}{109fc8}
+\definecolor{DarkTeal}{HTML}{095f78}
+\definecolor{DeepBlue}{HTML}{104b64}
+\colorlet{name}{DeepBlue}
+\colorlet{tagline}{BrightBlue}
+\colorlet{heading}{DeepBlue}
+\colorlet{headingrule}{BrightBlue}
+\colorlet{subheading}{DarkTeal}
+\colorlet{accent}{BrightBlue}
+\colorlet{emphasis}{black}
+\colorlet{body}{black!80}
+
+% Change some fonts, if necessary
+\renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+\renewcommand{\personalinfofont}{\footnotesize}
+\renewcommand{\cvsectionfont}{\LARGE\rmfamily\bfseries}
+\renewcommand{\cvsubsectionfont}{\large\bfseries}
+
+% Change the bullets for itemize and rating marker
+\renewcommand{\cvItemMarker}{{\small\textbullet}}
+\renewcommand{\cvRatingMarker}{\faCircle}

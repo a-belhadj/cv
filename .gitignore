@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+
+# Build outputs - All PDFs
+*.pdf
+
+# Personal information (sensitive data)
+latex/sections/personal-info-full.tex
+
+# NVM
+.nvmrc.bak
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# LaTeX auxiliary files
+*.xmpi
+latex/*.aux
+latex/*.log
+latex/*.out
+latex/*.bbl
+latex/*.blg
+latex/*.bcf
+latex/*.run.xml
+latex/*.fls
+latex/*.fdb_latexmk
+latex/*.synctex.gz
+latex/*.toc
+latex/*.lof
+latex/*.lot
+latex/*.nav
+latex/*.snm
+latex/*.vrb
+latex/texput.log
+latex/texput.fls
